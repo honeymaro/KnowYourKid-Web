@@ -6,6 +6,8 @@ var fs = require('fs');
 const FaceApi = require('node-mscs-face');
 var faceApi = new FaceApi('585a42cc26344ab799f9433c30789442', 'SEA');
 
+var multer = require('multer'); // v1.0.5
+var upload = multer(); // for parsing multipart/form-data
 
 
 /* GET home page. */
@@ -17,14 +19,15 @@ router.get('/upload', function (req, res, next) {
 });
 router.get('/tag', function (req, res, next) {
   viewFile(req, res, 'tag');
-})
+});
+router.get('/dashboard', function(req, res, next){
+  viewFile(req, res, 'dashboard');
+});
 
-router.get('/rec', function (req, res, next) {
+router.post('/rec', upload.none(), function (req, res, next) {
   // https://eastasia.api.cognitive.microsoft.com/face/v1.0/detect
-  var imageBuffer = fs.readFile(__dirname + "/../public/img/1.jpg", function (err, data) {
+  var imageBuffer = fs.readFile(`${__dirname}/../public/${req.body.src}`, function (err, data) {
     if (err) throw err;
-    console.log(data);
-    console.log(data.length);
     faceApi.detect(data)
       .then((faceInfo) => {
         res.send(faceInfo);

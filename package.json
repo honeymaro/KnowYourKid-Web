@@ -13,6 +13,7 @@
     "ejs": "~2.4.1",
     "express": "~4.13.4",
     "morgan": "~1.7.0",
+    "multer": "^1.3.0",
     "node-mscs-face": "^0.1.1",
     "nodemon": "^1.12.1",
     "request": "^2.83.0",

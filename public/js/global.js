@@ -44,21 +44,21 @@ $(document).ready(function () {
 			clearTimeout(timer_popup);
 		}, 1000);
 	}
-
-	var loading = function (isStart) {
-		if (isStart == false) {
-			$(".global_loading").remove();
-		}
-		else {
-			$('body').prepend('<div class="global_loading">'
-				+ '<div class="mask-loading">'
-				+ '<div class="spinner">'
-				+ '<div class="double-bounce1"></div>'
-				+ '<div class="double-bounce2"></div>'
-				+ '</div>'
-				+ '</div>'
-				+ '</div>'
-			);
-		}
-	}
 });
+
+var loading = function (isStart) {
+	if (isStart == false) {
+		$(".global_loading").remove();
+	}
+	else {
+		$('body').prepend('<div class="global_loading">'
+			+ '<div class="mask-loading">'
+			+ '<div class="spinner">'
+			+ '<div class="double-bounce1"></div>'
+			+ '<div class="double-bounce2"></div>'
+			+ '</div>'
+			+ '</div>'
+			+ '</div>'
+		);
+	}
+}
